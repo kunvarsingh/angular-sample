@@ -1,0 +1,15 @@
+<table>
+<thead>
+	<th>First Column</th>
+	<th>Second Column</th>
+</thead>
+<tbody>
+
+	<tr *ngFor="let values of TableData; let i=index">
+		<td>{{i+1}}</td>
+		<td>{{values}}</td>
+		<td>{{values}}</td>
+		<td><button type="button" value="submit" (click)="delete(i)">Delete</button></td>
+	</tr>
+</tbody>
+</table>
