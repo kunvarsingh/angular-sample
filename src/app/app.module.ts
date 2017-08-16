@@ -1,8 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import  {FormsModule} from '@angular/forms';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
+import { GallaryComponent } from './gallary/gallary.component';
 
 import { RouterModule, Routes } from '@angular/router';
 import { SignupComponent } from './signup/signup.component';
@@ -14,11 +14,13 @@ import { Http,  Headers,  RequestOptions,  Response} from '@angular/http';
 
 import {FetchDataService} from './fetch-data.service';
 import { TableComponent } from './Table/table/table.component';
- 
+import  {FormsModule,ReactiveFormsModule} from '@angular/forms';
+import { HomeComponent } from './home/home.component';
 import { ToasterModule } from 'angular2-toaster';
-import { ToasterContainerComponent, ToasterService, ToasterConfig} from 'angular2-toaster'
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MyNewDirectiveDirective } from './my-new-directive.directive';
+import { ToasterContainerComponent, ToasterService, ToasterConfig} from 'angular2-toaster';
+import { ContactsComponent } from './contacts/contacts.component';
+import { HeaderComponent } from './header/header.component';
+import { AddpostComponent } from './addpost/addpost.component';
 
 @NgModule({
   declarations: [
@@ -26,20 +28,20 @@ import { MyNewDirectiveDirective } from './my-new-directive.directive';
     LoginComponent,
     SignupComponent,
     TableComponent,
-    MyNewDirectiveDirective
+    HomeComponent,
+    GallaryComponent,
+    ContactsComponent,
+    HeaderComponent,
+    AddpostComponent
   ],
   imports: [
+  ToasterModule,
     BrowserModule,
     RouterModule,
     routing,
-    FormsModule,
-    HttpModule,
-    ToasterModule,
-    BrowserAnimationsModule 
+    FormsModule,ReactiveFormsModule,
+    HttpModule
   ],
-  exports: [
-        MyNewDirectiveDirective
-    ],
   providers: [FetchDataService,GlobalServiceService,ToasterService],
   bootstrap: [AppComponent]
 })

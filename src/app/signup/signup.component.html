@@ -1,3 +1,28 @@
-<p>
-  signup works!
-</p>
+ <div class="container">
+	<div class="login-container">
+            <div id="output">
+                <nav>
+              <h3><a routerLink="/login" routerLinkActive="active">login</a>
+              <a routerLink="/signup" routerLinkActive="active">signup</a></h3>
+              </nav>
+            </div>
+            <!-- <div class="avatar"></div> -->
+            <img src="https://lut.im/7JCpw12uUT/mY0Mb78SvSIcjvkf.png" class="img-circle">
+            <div class="form-box">
+                <form [formGroup]="signupForm">
+                    <input name="user" type="text" placeholder="username" formControlName='email'>
+                    <input type="password" placeholder="password" formControlName='password'>
+                    <select>
+                        <option value="selec">-select-</option>
+                        <option value="Develope">Develope</option>
+                        <option value="Develope1">Develope1</option>
+                        <option value="Develope2">Develope2</option>
+                    </select><br/>
+                    <!-- <span>Male:<input type="checkbox" name="male" value="male">
+                    Female:<input type="checkbox" name="female" value="female"></span> -->
+                    <button class="btn btn-info btn-block login" type="submit">SignUp</button>
+                </form>
+            </div>
+        </div>
+        
+</div>

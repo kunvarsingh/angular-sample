@@ -1,3 +1,35 @@
-<p>
-  login works!
-</p>
+
+  <div class="container">
+ <toaster-container></toaster-container>
+	<div class="login-container">
+            <div id="output">
+              <nav>
+			  <h3><a routerLink="/login" routerLinkActive="active">login</a>
+			  <a routerLink="/signup" routerLinkActive="active">signup</a></h3>
+			  </nav>
+            </div>
+            <!-- <div class="avatar"></div> -->
+            <img src="https://lut.im/7JCpw12uUT/mY0Mb78SvSIcjvkf.png" class="img-circle">
+            <div class="form-box">
+                <form [formGroup]="loginForm">
+                    <input name="user" type="text" placeholder="username" formControlName='email'>
+                    <input type="password" placeholder="password" formControlName='password'>
+                    <button class="btn btn-info btn-block login" (click)='logIn()' [disabled]='!registerForm.valid'>Login
+                     <img src={{loaderImage}} *ngIf='loader' style="margin:0 auto;display: block;"/>
+                    </button>
+                </form>
+            </div>
+        </div>
+</div>
+
+<!-- <div class="form-box">
+<img src={{loaderImage}} *ngIf='loader' style="margin:0 auto;display: block;"/>
+      <form [formGroup]="registerForm">
+          <input type="text" placeholder="Email" formControlName='email'><br/>
+          <input type="password" placeholder="Password" formControlName='password'><br/>
+          <button class="btn btn-info btn-block login" (click)='logIn()' [disabled]='!registerForm.valid' style="width: 10% !important">
+          <span class="glyphicon glyphicon-refresh spinning" *ngIf='loader'></span>
+            Register
+          </button>
+      </form>
+</div> -->

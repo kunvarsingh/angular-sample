@@ -8,21 +8,19 @@ import 'rxjs/add/operator/map'
 
 @Injectable()
 export class FetchDataService {
- body:string="grant_type=client_credentials&client_id=fd8f3ebea41547d59f6b58072064412fe364a4903b77cd44d2&client_secret=7f4075f3bc8f4ef6a01004bfb4a5e0c633bdc4f2c9007fd319";
 
   constructor(private http: Http,private gs:GlobalServiceService) {
-    this.http.post(this.gs.baseUrl+'/oauth/token',this.body)
-    .map((res:Response)=>{
-        localStorage.setItem("auth_Token",res.json());
-        return res.json();
-      })
+
    }
 
+
  createAuthorizationHeader(headers: Headers) {
+  debugger;
+    this.gs.getToken();
     const token = localStorage.getItem('authToken');
     headers.append('Content-Type', 'application/json');
     headers.append('Accept', 'application/json');
-    headers.append('Authorization', 'Bearer 48STruIaJecgObX5SBq46rMOTmp6YjHPqso5mplQGJIcgYg8FHIECdkCX2KbG8IcluJVpPuB2PUZdjI2uew3DEuFs8ksSvmgovyC7-NCas6cdFstnAbN7l17S0L_tutcbnI4_taUw83njkSzTWvKb0lCJR-fdDY8ye26e5sxeNQrCQxpzFaZvOGXJRp_AHfVWedWYfC-JuSjW3_Fy8yJ3d38p8vk1LBqFlDTyEVVCR9t0-AvMeX95bbIn8AZT_k967HlHlaVjcFJxWY_6RJ2zHeddPngL23-LUL_hrLKZDsKLtzhjkQALxwtfT0KllxRDe5W8cuHcvWPZzaUybhTjE6p8Btniy5AN7F69v0CFTKn2vjlS0Wrb7ffgFhPIM2rS5N82NKTjYyCH5-g7S8EQg');
+    headers.append('Authorization', 'Bearer 69QHHUiL5jMC0aN8c-4MLuVbVMvQu8A05w3XNgqVOXGFEX5usj3T-F2Rigd-k0z8x8oOWMP1ZzmQTDq4jOA6wPAnWCVszvBtJDoHpzMxA_RvWz3w_qVqLrj-VCwyzCtIw6QedWKbCYw6brB2Oz3crMR1vSrmy2FYAu7m67vH9BBAcWSGykCaQWcDUGVSv0r0yyKYRTmpTOSYbyLkAUyiiS40IRozGJKCe-2tfbGphWVJIAbW1Xf8geEYmrfxqgJSpe6shRS4kZBbY1ueMUxaAtYepQQOLL6ZvQeUxav7CbORO3q_RhIF_A_zcdB0v2XE6_fM2rAqmMXhIcpkxzzMv7VHzbDo0T7xRIu66dkisOaed4arDVKpCH7bCQY_NqHb');
   }
 
 writeHeaders(){
@@ -46,12 +44,42 @@ return this.http.post(this.gs.baseUrl+'/rest/v1/tables/user_Login_Table/rows',us
 getUsetFromCaspio(){
   let userGetQuery='?q={"select:"}';
 const options=this.writeHeaders();
-    return this.http.get(this.gs.baseUrl+'/rest/v1/tables/user_Login_Table/rows',options)
+    return this.http.get(this.gs.baseUrl+'/rest/v1/tables/User_sign_up/rows',options)
     .map((res:Response)=>{ return res.json();}) 
 }
  //END Section--
 
+getContactsList(){
+let userGetQuery='?q={"select:"}';
+const options=this.writeHeaders();
+    return this.http.get(this.gs.baseUrl+'/rest/v1/tables/contacts/rows',options)
+    .map((res:Response)=>{ return res.json();}) 
+}
 
+addContactsData(data:any){
+const options=this.writeHeaders();
+return this.http.post(this.gs.baseUrl+'/rest/v1/tables/contacts/rows',data,options)
+.map((res:Response)=>{res.json();})
+}
+
+deleteContacts(contactId:any){
+   let query=`?q={"where":"contactId='`+contactId+`'"}`;
+   const options=this.writeHeaders();
+   return this.http.delete(this.gs.baseUrl+'/rest/v1/tables/contacts/rows/'+query,options)
+     .map((response: Response) => {
+     response.json();
+     })
+     .catch((error:any) => { 
+       return Observable.throw(error);
+     }); 
+}
+
+getUserBioData(userId:any){
+let query=`?q={"where":"userId='`+userId+`'"}`;
+const options=this.writeHeaders();
+    return this.http.get(this.gs.baseUrl+'/rest/v1/tables/user_information/rows/'+query,options)
+    .map((res:Response)=>{ return res.json();})   
+}
  //Method for inserting the value in CASPIO
   deleteUserFromCaspio(username:any) {
     let query='?q={"where":"user_name="'+username+'""}';

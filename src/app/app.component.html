@@ -1,38 +1,35 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
+<div style="text-align:center;margin-top:50px;">
   <h1>
-    Welcome to {{title}}!
+    **Welcome to Digital family**
   </h1>
-  
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
- 
-  <nav>
-  <a routerLink="/login" routerLinkActive="active">login</a><br/>
-  <a routerLink="/signup" routerLinkActive="active">signup</a>
-  </nav>
   <toaster-container></toaster-container>
+</div>
+ 
+  <!-- <nav>
+  <h3><a routerLink="/login" routerLinkActive="active">login</a>
+  <a routerLink="/signup" routerLinkActive="active">signup</a></h3>
+  </nav> -->
+  
   <router-outlet></router-outlet>
-</ul>
- <p>Heroes:</p>
+ <!-- <p>Heroes:</p>
   <ul>
     <li *ngFor="let hero of heroes">
       {{ hero }}
     </li>
   </ul>
 
-<h1 appMyNewDirective>Hidden Welcome</h1>
-
 <app-table [TableData]="TableArray"></app-table>
-
+<img src={{loaderImage}} *ngIf='loader' style="margin:0 auto;display: block;"/>
   <button type="button" value="submit" (click)="clickMe()">submit</button>
 
 <input type="text" placeholder="type name here..." [(ngModel)]="User.user_Name">
 <input type="password" placeholder="type password here..." [(ngModel)]="User.password">
 <!-- <input type="text" placeholder="type designation here..." [(ngModel)]="User.degination"> -->
 
-<select [(ngModel)]="User.degination" required>
+
+
+<!-- <select [(ngModel)]="User.degination" required>
   <option *ngFor="let deg of degination" [ngValue]="deg">{{deg}}</option>
 </select>
 
@@ -43,6 +40,6 @@
 <input type="text" placeholder="type name here..." [(ngModel)]="deleteUserName">
   <button type="button" value="submit" (click)="deleteCASPIO()"> DELETE From CASPIO</button>
 
-  <button type="button" value="submit" (click)="updateCASPIO()"> UPDATE From CASPIO</button>
+  <button type="button" value="submit" (click)="updateCASPIO()"> UPDATE From CASPIO</button> -->
 
 
